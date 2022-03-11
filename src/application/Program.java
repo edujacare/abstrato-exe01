@@ -40,20 +40,22 @@ public class Program {
 				list.add(new PessoaJuridica(nome, rendaAnual, numFunc));
 			}
 		}
-		
-		double soma = 0.0;
-		
+				
 		System.out.println();
 		System.out.println("TAXES PAID:");
 		
 		for (Contribuinte cont : list) {
 			double imposto = cont.imposto();
 			System.out.println(cont.getNome() + ": $ "+ String.format("%.2f", imposto));
-			soma += imposto;
+		}
+		
+		double soma = 0.0;
+		for (Contribuinte cont : list ) {
+			soma += cont.imposto();			
 		}
 		
 		System.out.println();
-		System.out.print("TOTAL TAXES: $ " + soma);
+		System.out.print("TOTAL TAXES: $ " + String.format("%.2f", soma));
 		
 		sc.close();
 
